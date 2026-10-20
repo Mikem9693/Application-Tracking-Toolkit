@@ -1,8 +1,8 @@
-# Email Evidence Saver
+# Email Saver
 
 Part of the [Application Tracking Toolkit](../README.md).
 
-The tracker records what happens to each application. The email evidence saver keeps the proof. It is an optional, standalone Google Apps Script that automatically saves application acknowledgements and rejections from Gmail as dated PDFs in Google Drive, building a complete, chronological record of every application and its outcome.
+The [Job Search Tracker](../Application-Tracker/) records what happens to each application. The email evidence saver keeps the proof. It is an optional, standalone Google Apps Script that automatically saves application acknowledgements and rejections from Gmail as dated PDFs in Google Drive, building a complete, chronological record of every application and its outcome.
 
 I built it when I needed to produce that record and found that saving several hundred emails by hand was slow and easy to get wrong. Like the tracker, it takes a repetitive process and makes it run itself.
 
@@ -25,7 +25,7 @@ It is deliberately kept separate from the tracker. Combining them would mean any
 ## Setup
 
 1. Go to [script.google.com](https://script.google.com) and click **New project**.
-2. Delete the placeholder code and paste in `email-evidence-saver.gs`.
+2. Delete the placeholder code and paste in the contents of `email-saver.gs`.
 3. Update the settings at the top of the script (see below).
 4. Check **Project Settings**, then **Time zone**, is correct, as file dates follow it.
 5. Click **Save**.
@@ -48,7 +48,7 @@ All settings are at the top of the script.
 | `REJ_FOLDER` | Subfolder for rejections | `Application Rejections` |
 | `REJ_PREFIX` | File name prefix for rejections | `Application Rejection` |
 
-Notes:
+A few notes:
 
 - **Folder paths** can be nested, for example `['Employment', 'Job Search']`. Folders are created automatically if they do not exist. Names must match existing folders exactly, including capitals, or a new folder will be created alongside.
 - **Months in `BACKFILL_FROM` start at 0**, so `new Date(2026, 0, 1)` is 1 January and `new Date(2026, 5, 1)` is 1 June.
@@ -70,7 +70,7 @@ To capture emails received before set-up:
 2. Select `backfillAll` and click **Run**.
 3. Close the tab. The backfill continues automatically until complete.
 
-It works through acknowledgements and then rejections, pausing before Google's six-minute limit and scheduling itself to carry on a minute later. When it has finished, it removes its own trigger. *Do not* add a trigger for `backfillAll` yourself.
+It works through acknowledgements and then rejections, pausing before Google's six-minute limit and scheduling itself to carry on a minute later. When it has finished, it removes its own trigger. Do not add a trigger for `backfillAll` yourself.
 
 **Checking progress.** Each run shows "Execution completed" under **Executions** whether it paused or finished, so open the run and check the log message itself: "Paused" means it is still working, "Backfill complete" means it is done. While it is working, a temporary `backfillAll` trigger appears under **Triggers**.
 
@@ -82,14 +82,14 @@ It works through acknowledgements and then rejections, pausing before Google's s
 
 ## What to expect
 
-**More acknowledgements than applications.** Many applications produce two confirmations, one from the job board (for example LinkedIn's "your application was sent") and one from the employer's own recruitment system. Both are kept, as two independent confirmations of one application are stronger evidence than one.
+**More acknowledgements than applications.** Many applications produce two confirmations, one from the job board (for example LinkedIn's "your application was sent") and one from the employer's own recruitment system. As a guide, around 330 applications produced just over 500 acknowledgements in testing. Both are kept, as two independent confirmations of one application are stronger evidence than one.
 
 If you would rather keep one per application, Google Drive indexes the text inside PDFs, so searching the folder for a sender such as `jobs-noreply@linkedin.com` will list the job board copies for moving elsewhere.
 
 **A short review pass.** Once the backfill has finished:
 
 - Rename any files saved as `Unknown Company`, using the sender or body of the email.
-- It is expected that some emails outside of the intended scope will be saved. 
+- Move anything out of scope into a separate subfolder rather than deleting it, so there is a record of what was reviewed and set aside.
 
 Renaming, moving or deleting files is safe. The script remembers emails by their ID, not their file name, so nothing you change will be saved again.
 
@@ -127,4 +127,4 @@ Recruitment systems and job boards (Workday, Greenhouse, LinkedIn and similar) a
 ## What is in this folder
 
 - **README.md**: this file.
-- **email-evidence-saver.gs**: the script.
+- **email-saver.gs**: the script.
