@@ -14,15 +14,17 @@
  * The functions look up columns by header name, so the following headers must
  * exist exactly as written on the tracker tab:
  *   Application Date, Job Title, Status, Pass Sift, First Interview
- * The tab itself must be named 'Application Tracker 2026'. If you rename the
- * tab or any of those headers, update the matching name below.
+ * The tracker tab name is set in SHEET_NAME below. If you rename the tab or any
+ * of those headers, update the matching name in this script.
  */
 
+const SHEET_NAME = 'Application Tracker Template'; // name of the tracker tab
+
 function updateStatus() {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Application Tracker 2026');
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
 
   if (!sheet) {
-    SpreadsheetApp.getUi().alert('Could not find sheet "Application Tracker 2026". Please check the sheet name matches exactly.');
+    SpreadsheetApp.getUi().alert('Could not find sheet "' + SHEET_NAME + '". Please check the sheet name matches exactly.');
     return;
   }
 
@@ -58,10 +60,10 @@ function updateStatus() {
 }
 
 function updatePassSift() {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Application Tracker 2026');
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
 
   if (!sheet) {
-    SpreadsheetApp.getUi().alert('Could not find sheet "Application Tracker 2026". Please check the sheet name matches exactly.');
+    SpreadsheetApp.getUi().alert('Could not find sheet "' + SHEET_NAME + '". Please check the sheet name matches exactly.');
     return;
   }
 
