@@ -203,4 +203,33 @@ function companyName_(msg) {
     if (idx === -1) continue;
     const candidate = subject.slice(idx + word.length + 2)
       .split(/[!:,|(]|\s-\s|\.\s|\.$|\s+for\s/i)[0].trim();
-    if (candidate && candidate.length <= 40 &&
+    if (candidate && candidate.length <= 40 && !GENERIC_SENDERS.test(candidate)) return candidate;
+  }
+
+  // 3. Sender's email domain, e.g. careers@mojo.com becomes "Mojo"
+  const domain = (from.match(/@([\w.-]+)/) || [])[1] || '';
+  const part = domain.split('.').filter(p =>
+    !/^(mail|email|em|careers|jobs|hire|recruiting|us|eu|co|com|uk|io|org|net|ai)$/i.test(p))[0];
+  if (part && !GENERIC_SENDERS.test(part)) return part.charAt(0).toUpperCase() + part.slice(1);
+
+  // 4. Nothing reliable found
+  return 'Unknown Company';
+}
+
+// ===== Helpers =====
+function clean_(s) {
+  return String(s).replace(/[\\/:*?"<>|]/g, '').replace(/\s+/g, ' ').trim();
+}
+
+function esc_(s) {
+  return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function getFolder_(path) {
+  let folder = DriveApp.getRootFolder();
+  for (const name of path) {
+    const it = folder.getFoldersByName(name);
+    folder = it.hasNext() ? it.next() : folder.createFolder(name);
+  }
+  return folder;
+}
