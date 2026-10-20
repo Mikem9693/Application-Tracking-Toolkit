@@ -29,7 +29,7 @@ The two are deliberately kept separate. The tracker only needs access to its own
     ├── Application-Tracker/
     │   ├── README.md
     │   ├── apps-script.gs
-    │   └── Application Tracker Template Published
+    │   └── Application Tracker Template Published.xlsx
     └── Email-Saver/
         ├── README.md
         └── email-saver.gs
