@@ -1,4 +1,4 @@
-tracker/**
+/**
  * Job Search Tracker - automation
  *
  * Two functions keep the application pipeline current:
