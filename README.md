@@ -10,7 +10,7 @@ I built this during my own job search. As a delivery professional, treating the 
 
 A Google Sheets tracker that logs every application through defined stages, updates statuses automatically, retires applications that have gone quiet, and rolls everything up into a metrics layer ready for a dashboard. This is the core of the toolkit and the best place to start.
 
-### [Email Evidence Saver](Email-Saver/)
+### [Email Saver](Email-Saver/)
 
 An optional, standalone script that automatically saves application acknowledgements and rejections from Gmail as dated PDFs in Google Drive. The tracker records what happens to each application; the evidence saver keeps the proof. It also includes a backfill, so it can build a record from emails already in your inbox, even if you have not been tracking until now.
 
