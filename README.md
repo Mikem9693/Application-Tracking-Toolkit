@@ -6,11 +6,11 @@ I built this during my own job search. As a delivery professional, treating the 
 
 ## What is in the toolkit
 
-### [Job Search Tracker](tracker/)
+### [Job Search Tracker](Application-Tracker/)
 
-A Google Sheets tracker that logs every application through defined stages, updates statuses automatically, retires applications that have gone quiet, and rolls everything up into a metrics dashboard. This is the core of the toolkit and the best place to start.
+A Google Sheets tracker that logs every application through defined stages, updates statuses automatically, retires applications that have gone quiet, and rolls everything up into a metrics layer ready for a dashboard. This is the core of the toolkit and the best place to start.
 
-### [Email Evidence Saver](email-evidence-saver/)
+### [Email Evidence Saver](Email-Saver/)
 
 An optional, standalone script that automatically saves application acknowledgements and rejections from Gmail as dated PDFs in Google Drive. The tracker records what happens to each application; the evidence saver keeps the proof. It also includes a backfill, so it can build a record from emails already in your inbox, even if you have not been tracking until now.
 
@@ -26,18 +26,17 @@ The two are deliberately kept separate. The tracker only needs access to its own
 
     Application-Tracking-Toolkit/
     ├── README.md
-    ├── tracker/
+    ├── Application-Tracker/
     │   ├── README.md
     │   ├── apps-script.gs
-    │   ├── dashboard-spec.md
     │   └── Application Tracker Template Published.xlsx
-    └── email-evidence-saver/
+    └── Email-Saver/
         ├── README.md
-        └── email-evidence-saver.gs
+        └── email-saver.gs
 
 ## Companion project
 
-This pairs with my job application automation repository. That workflow finds and triages roles and drafts applications; this toolkit records and reports on what happens to them. Together they run the full search as one system: sourcing and triage at the front, pipeline, reporting and evidence at the back.
+This pairs with my [job search automation](https://github.com/Mikem9693/job-search-automation) repository. That workflow finds and triages roles and drafts applications; this toolkit records and reports on what happens to them. Together they run the full search as one system: sourcing and triage at the front, pipeline, reporting and evidence at the back.
 
 ## A note on scope
 
