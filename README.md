@@ -29,10 +29,12 @@ The two are deliberately kept separate. The tracker only needs access to its own
     ├── Application-Tracker/
     │   ├── README.md
     │   ├── apps-script.gs
-    │   └── Application Tracker Template Published.xlsx
+    │   └── Application Tracker Template Published
     └── Email-Saver/
         ├── README.md
         └── email-saver.gs
+
+The tracker is built for *Google Sheets. It is not designed for Excel, and the automation **will not run in Excel.
 
 ## Companion project
 
